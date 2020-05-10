@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flex:1,
         flexDirection: 'row',
-        paddingHorizontal: 8
+        paddingHorizontal: 8,
     },
     image: {
         width: 122,

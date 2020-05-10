@@ -1,19 +1,19 @@
 import React, {useState} from 'react'
 import {StyleSheet, Text, View, ScrollView, Image} from 'react-native';
 import {DATA} from "../mockData/data";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
-export const ListScreen = ({route,navigation}) => {
-    const {postId} = route.params;
+export const ListScreen = ({navigation}) => {
+    const postId = navigation.getParam('postId');
     const post = DATA.find(i => i.id === postId);
 
     const [screenHeight, setScreenHeight] = useState(0);
+
     const onContentSizeChange = (contentWidth, contentHeight) => {
         return setScreenHeight(contentHeight)
     }
 
-    // React.useLayoutEffect(() => {
-    //     navigation.setParams({like: post.like});
-    // }, []);
 
     return (
         <ScrollView onContentSizeChange={onContentSizeChange}>
@@ -24,23 +24,37 @@ export const ListScreen = ({route,navigation}) => {
                     <View style={styles.overlayDate}>
                         <Text style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </Text>
                     </View>
+                    <View style={styles.elevatedElement}><Text style={styles.elevatedText}> 30% </Text></View>
                 </View>
-                <View style={styles.elevatedElement}><Text style={styles.elevatedText}> 30% </Text></View>
             </View>
         </ScrollView>
     )
 }
 
-
+ListScreen.navigationOptions = ({navigation}) => {
+    const like = navigation.getParam('like')
+    const iconName = like?  'ios-heart' : 'ios-heart-empty';
+    return {
+        headerTitle: 'Скидка',
+        headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                <Item iconName={iconName} title="Search" onPress={() => alert('This is a button!')}/>
+            </HeaderButtons>
+        ),
+    }
+}
 const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 200,
     },
     overlayText: {
-        width: '100%',
         flex: 1,
-        padding: 8
+        padding: 8,
+        backgroundColor: '#fff',
+        marginTop: 5,
+        marginHorizontal: 8,
+        borderRadius: 3
     },
     elevatedElement: {
         backgroundColor: "#1EDA31",
@@ -49,9 +63,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        marginTop: 6,
+        marginTop: 10,
         flex: 1,
-        marginLeft: 10
     },
     elevatedText: {
         // fontFamily: "Source Sans Pro",

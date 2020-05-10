@@ -1,91 +1,75 @@
-import React,{Fragment} from 'react';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack'
+import React from 'react';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack'
+import {createBottomTabNavigator} from 'react-navigation-tabs'
 import {MainScreen} from "../screens/MainScreen";
-import { TouchableOpacity} from 'react-native';
 import {ListScreen} from "../screens/ListScreen";
-import {THEME} from "../variables/theme";
-import {Ionicons} from "@expo/vector-icons";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FavoritesScreen} from "../screens/FavoritesScreen";
+import {Ionicons} from "@expo/vector-icons";
+import {CategoryScreen} from "../screens/category/CategoryScreen";
+import {CompanyScreen} from "../screens/company/CompanyScreen";
+import {CategoryInsideScreen} from "../screens/category/CategoryInsideScreen";
+import {CompanyInsideScreen} from "../screens/company/CompanyInsideScreen";
 
-const Stack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
-export const AppNavigation = () => {
-    const stylesOptions = {
-        headerStyle: {
-            backgroundColor: THEME.BACKGROUND_COLOR
-        },
-        headerTintColor: THEME.FONT_COLOR
+const PostNavigation = createStackNavigator({
+    Main: MainScreen,
+    List: {
+        screen: ListScreen
     }
-    const iconName = 'ios-star';
-    function HomeStack() {
-        return (
-                <Tab.Navigator   tabBarOptions={{
-                    activeTintColor: '#DB3022',
-                }}>
-                    <Tab.Screen
-                        name="Main"
-                        component={MainScreen}
-                        options={{
-                            tabBarLabel: 'Главная',
-                            tabBarIcon: ({ color}) => (
-                                <Ionicons name="ios-albums" color={color} size={25} />
-                            ),
-                        }}
-                    />
-                    <Tab.Screen name="Favorite" component={FavoritesScreen} options={{
-                        tabBarLabel: 'Акция',
-                        tabBarIcon: ({ color}) => (
-                            <Ionicons name="ios-home" color={color} size={25} />
-                        ),
-                    }} />
-                </Tab.Navigator>
-        )
+}, {
+    initialRouteName: 'Main'
+});
+const FavoriteNavigator = createStackNavigator({
+    Favorites: FavoritesScreen,
+})
+
+const CategoryNavigator = createStackNavigator({
+    Category: CategoryScreen,
+    CategoryInsideScreen: {
+        screen: CategoryInsideScreen
+    },
+    List: {
+        screen: ListScreen
     }
-    return (
-        <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName="Main"
-                screenOptions={stylesOptions}
-            >
-                <Stack.Screen
-                    name="Main"
-                    component={HomeStack}
-                    options={{
-                        title: 'Скидки',
-                        headerRight: () => (
-                            <TouchableOpacity style={{marginRight: 10, position: 'relative', top: 0}}
-                                              activeOpacity={0.7} onPress={() => alert('This is a button!')}>
-                                <Ionicons name="ios-search" size={32} color="#222222"/>
-                            </TouchableOpacity>
-                        ),
-                        headerLeft: () => (
-                            <TouchableOpacity style={{marginLeft: 10, position: 'relative', top: 1}}
-                                              activeOpacity={0.7} onPress={() => alert('This is a button!')}>
-                                <Ionicons name="ios-mail" size={32} color="#222222"/>
-                            </TouchableOpacity>
-                        ),
-                    }}
-
-                />
-                <Stack.Screen
-                    name="List"
-                    component={ListScreen}
-                    options={({ route }) => ({
-                        title: 'Акция',
-                        headerRight: () => (
-                            <TouchableOpacity style={{marginRight: 10, position: 'relative',top: 2}}
-                                              activeOpacity={0.7} onPress={()=>{}}>
-                                <Ionicons name={route.params.like ? iconName : 'ios-star-outline'} size={32} color="#222222"/>
-                            </TouchableOpacity>
-                        ),
-                    })}
-
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
-}
+})
+const CompanyNavigator = createStackNavigator({
+    Company: CompanyScreen,
+    CompanyInsideScreen: {
+        screen: CompanyInsideScreen
+    },
+    List: {
+        screen: ListScreen
+    }
+})
+const BottomTabNavigation = createBottomTabNavigator({
+    Main: {
+        screen: PostNavigation,
+        navigationOptions: {
+            tabBarIcon: info => (<Ionicons name="ios-home" size={25} color={info.tintColor}/>)
+        }
+    },
+    Category: {
+        screen: CategoryNavigator,
+        navigationOptions: {
+            tabBarIcon: info => (<Ionicons name="md-cart" size={25} color={info.tintColor}/>)
+        }
+    },
+    Company: {
+        screen: CompanyNavigator,
+        navigationOptions: {
+            tabBarIcon: info => (<Ionicons name="ios-briefcase" size={25} color={info.tintColor}/>)
+        }
+    },
+    Favorites: {
+        screen: FavoriteNavigator,
+        navigationOptions: {
+            tabBarIcon: info => (<Ionicons name="ios-heart" size={25} color={info.tintColor}/>)
+        }
+    },
+}, {
+    tabBarOptions: {
+        inactiveTintColor: '#9B9B9B',
+        activeTintColor: '#DB3022'
+    }
+})
+export const AppNavigation = createAppContainer(BottomTabNavigation)

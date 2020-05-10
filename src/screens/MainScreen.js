@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-import {StyleSheet, Button, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import {DATA} from "../mockData/data";
 import {Post} from "../components/ui/Post";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
 export const MainScreen = ({navigation}) => {
     const openPostHandler = post => {
-        navigation.navigate('List', {postId: post.id,like: post.like})
+        navigation.navigate('List', {postId: post.id, like: post.like})
     }
     const [screenHeight, setScreenHeight] = useState(0);
     const onContentSizeChange = (contentWidth, contentHeight) => {
@@ -19,6 +21,19 @@ export const MainScreen = ({navigation}) => {
     )
 }
 
+MainScreen.navigationOptions = {
+    headerTitle: 'Главная',
+    headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+            <Item iconName="ios-search" title="Search" onPress={() => alert('This is a button!')}/>
+        </HeaderButtons>
+    ),
+    headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+            <Item iconName="ios-mail" title="Send" onPress={() => alert('This is a button!')}/>
+        </HeaderButtons>
+    )
+}
 const styles = StyleSheet.create({
     mainView: {
         marginTop: 10
