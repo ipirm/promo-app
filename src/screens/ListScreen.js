@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {StyleSheet, View, ScrollView, Image} from 'react-native'
+import {StyleSheet, View, ScrollView, Image, Text} from 'react-native'
 import {HeaderButtons, Item} from "react-navigation-header-buttons"
 import {AppHeaderIcon} from "../components/AppHeaderIcon"
 import {THEME} from "../variables/theme"
 import {AppText} from "../components/ui/text/AppText"
 import {useDispatch, useSelector} from "react-redux";
 import {getPost} from "../store/actions/post";
-
+import {AppLoader} from "../components/ui/AppLoader";
 
 export const ListScreen = ({navigation}) => {
 
@@ -19,6 +19,7 @@ export const ListScreen = ({navigation}) => {
     }, [dispatch]);
 
     const post = useSelector(state => state.post.activePost)
+    const loading = useSelector(state => state.post.loading)
 
     const [screenHeight, setScreenHeight] = useState(0);
 
@@ -26,21 +27,24 @@ export const ListScreen = ({navigation}) => {
         return setScreenHeight(contentHeight)
     }
 
-
-    return (
-        <ScrollView onContentSizeChange={onContentSizeChange}>
-            <View>
-                <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
-                <View style={styles.overlayText}>
-                    <AppText style={styles.mainText}>{post.body} </AppText>
-                    <View style={styles.overlayDate}>
-                        <AppText style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </AppText>
+    if (loading) {
+        return <AppLoader/>
+    } else {
+        return (
+            <ScrollView onContentSizeChange={onContentSizeChange}>
+                <View>
+                    <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
+                    <View style={styles.overlayText}>
+                        <AppText style={styles.mainText}>{post.body} </AppText>
+                        <View style={styles.overlayDate}>
+                            <AppText style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </AppText>
+                        </View>
+                        <View style={styles.elevatedElement}><AppText style={styles.elevatedText}> 30% </AppText></View>
                     </View>
-                    <View style={styles.elevatedElement}><AppText style={styles.elevatedText}> 30% </AppText></View>
                 </View>
-            </View>
-        </ScrollView>
-    )
+            </ScrollView>
+        )
+    }
 }
 
 ListScreen.navigationOptions = ({navigation}) => {

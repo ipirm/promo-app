@@ -4,6 +4,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons"
 import {AppHeaderIcon} from "../components/AppHeaderIcon"
 import {AppView} from "../components/AppView"
 import {loadPosts} from "../store/actions/post";
+import {AppLoader} from "../components/ui/AppLoader";
 
 
 export const MainScreen = ({navigation}) => {
@@ -19,10 +20,14 @@ export const MainScreen = ({navigation}) => {
     }, [dispatch]);
 
     const allPosts = useSelector(state => state.post.allPosts)
-
-    return (
-        <AppView data={allPosts} onOpenPostView={openPostHandler}/>
-    )
+    const loading = useSelector(state => state.post.loading)
+    if (loading) {
+        return <AppLoader />
+    }else {
+        return (
+            <AppView data={allPosts} onOpenPostView={openPostHandler}/>
+        )
+    }
 }
 
 MainScreen.navigationOptions = {
