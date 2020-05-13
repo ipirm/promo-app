@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be9802a7-56f3-4dbf-bf24-fe3c763a5b9e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ui/AppLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/ListScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ListScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/MainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/MainScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,17 +35,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/screens/MainScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="53" />
+            <state relative-caret-position="234">
+              <caret line="21" column="32" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/screens/ListScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+            <state relative-caret-position="182">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -56,14 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ui/AppLoader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="26">
+              <caret line="1" column="24" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -131,13 +128,13 @@
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/src/store/index.js" />
         <option value="$PROJECT_DIR$/src/components/ui/Post.js" />
-        <option value="$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js" />
-        <option value="$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js" />
         <option value="$PROJECT_DIR$/src/store/types.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/post.js" />
         <option value="$PROJECT_DIR$/src/store/actions/post.js" />
         <option value="$PROJECT_DIR$/src/components/ui/AppLoader.js" />
         <option value="$PROJECT_DIR$/src/screens/MainScreen.js" />
+        <option value="$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js" />
+        <option value="$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js" />
         <option value="$PROJECT_DIR$/src/screens/ListScreen.js" />
       </list>
     </option>
@@ -185,6 +182,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="screens" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="promo-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="promo-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="screens" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="promo-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="promo-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="screens" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -202,14 +213,14 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\OSPanel\domains\promo-app\assets\fonts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\OSPanel\domains\promo-app\src\components\ui" />
       <recent name="C:\OSPanel\OSPanel\domains\promo-app\src\screens\company" />
       <recent name="C:\OSPanel\OSPanel\domains\promo-app\src\screens\category" />
       <recent name="C:\OSPanel\OSPanel\domains\promo-app\src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\OSPanel\OSPanel\domains\promo-app\assets\fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -248,12 +259,12 @@
       <workItem from="1589184680079" duration="782000" />
       <workItem from="1589277258828" duration="5967000" />
       <workItem from="1589378436326" duration="11943000" />
-      <workItem from="1589400023692" duration="4048000" />
+      <workItem from="1589400023692" duration="5294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72336000" />
+    <option name="totallyTimeSpent" value="73582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -447,23 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" selection-start-line="6" selection-end-line="12" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ui/Post.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -511,23 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/MainScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/ListScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/reducers/post.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="676">
@@ -537,10 +514,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ui/AppLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        <state relative-caret-position="26">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/company/CompanyInsideScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/category/CategoryInsideScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="21" selection-start-line="21" selection-end-line="21" selection-end-column="95" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/MainScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/ListScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>

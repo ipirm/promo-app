@@ -21,13 +21,8 @@ export const MainScreen = ({navigation}) => {
 
     const allPosts = useSelector(state => state.post.allPosts)
     const loading = useSelector(state => state.post.loading)
-    if (loading) {
-        return <AppLoader />
-    }else {
-        return (
-            <AppView data={allPosts} onOpenPostView={openPostHandler}/>
-        )
-    }
+
+    return loading ? <AppLoader/> : <AppView data={allPosts} onOpenPostView={openPostHandler}/>
 }
 
 MainScreen.navigationOptions = {

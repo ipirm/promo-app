@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import {AppView} from "../../components/AppView"
 import {useDispatch, useSelector} from 'react-redux'
 import {loadPosts} from "../../store/actions/post";
+import {AppLoader} from "../../components/ui/AppLoader";
 export const CompanyInsideScreen = ({navigation}) => {
 
     const dispatch = useDispatch()
@@ -11,14 +12,14 @@ export const CompanyInsideScreen = ({navigation}) => {
     }, [dispatch]);
 
     const allPosts = useSelector(state => state.post.allPosts)
+    const loading = useSelector(state => state.post.loading)
+
 
     const openPostHandler = post => {
         navigation.navigate('List', {postId: post.id, like: false})
     }
 
-    return (
-        <AppView data={allPosts} onOpenPostView={openPostHandler} />
-    )
+    return loading ? <AppLoader/> : <AppView data={allPosts} onOpenPostView={openPostHandler}/>
 }
 
 CompanyInsideScreen.navigationOptions = {

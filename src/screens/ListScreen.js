@@ -27,24 +27,21 @@ export const ListScreen = ({navigation}) => {
         return setScreenHeight(contentHeight)
     }
 
-    if (loading) {
-        return <AppLoader/>
-    } else {
-        return (
-            <ScrollView onContentSizeChange={onContentSizeChange}>
-                <View>
-                    <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
-                    <View style={styles.overlayText}>
-                        <AppText style={styles.mainText}>{post.body} </AppText>
-                        <View style={styles.overlayDate}>
-                            <AppText style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </AppText>
-                        </View>
-                        <View style={styles.elevatedElement}><AppText style={styles.elevatedText}> 30% </AppText></View>
+
+    return loading ? <AppLoader/> : (
+        <ScrollView onContentSizeChange={onContentSizeChange}>
+            <View>
+                <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
+                <View style={styles.overlayText}>
+                    <AppText style={styles.mainText}>{post.body} </AppText>
+                    <View style={styles.overlayDate}>
+                        <AppText style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </AppText>
                     </View>
+                    <View style={styles.elevatedElement}><AppText style={styles.elevatedText}> 30% </AppText></View>
                 </View>
-            </ScrollView>
-        )
-    }
+            </View>
+        </ScrollView>
+    )
 }
 
 ListScreen.navigationOptions = ({navigation}) => {
