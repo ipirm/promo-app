@@ -1,29 +1,27 @@
-import React, {useState} from 'react'
-import {StyleSheet, ScrollView} from 'react-native';
-import {DATA} from "../../mockData/data";
-import {Post} from "../../components/ui/Post";
-
+import React,{useEffect} from 'react'
+import {AppView} from "../../components/AppView"
+import {useDispatch, useSelector} from 'react-redux'
+import {loadPosts} from "../../store/actions/post";
 export const CompanyInsideScreen = ({navigation}) => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(loadPosts())
+    }, [dispatch]);
+
+    const allPosts = useSelector(state => state.post.allPosts)
+
     const openPostHandler = post => {
-        navigation.navigate('List', {postId: post.id, like: post.like})
+        navigation.navigate('List', {postId: post.id, like: false})
     }
-    const [screenHeight, setScreenHeight] = useState(0);
-    const onContentSizeChange = (contentWidth, contentHeight) => {
-        return setScreenHeight(contentHeight)
-    }
+
     return (
-        <ScrollView style={styles.mainView} onContentSizeChange={onContentSizeChange}>
-            {DATA.map((value, index) => {
-                return <Post key={index} item={value} onOpen={openPostHandler}/>
-            })}</ScrollView>
+        <AppView data={allPosts} onOpenPostView={openPostHandler} />
     )
 }
 
 CompanyInsideScreen.navigationOptions = {
     headerTitle: 'Название'
 }
-const styles = StyleSheet.create({
-    mainView: {
-        marginTop: 10
-    }
-})
+

@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import {StyleSheet, ScrollView, View} from 'react-native';
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import {AppHeaderIcon} from "../../components/AppHeaderIcon";
-import {CategotyComponent} from "../../components/ui/CategotyComponent";
+import {ScrollView} from 'react-native'
+import {HeaderButtons, Item} from "react-navigation-header-buttons"
+import {AppHeaderIcon} from "../../components/AppHeaderIcon"
+import {CategotyComponent} from "../../components/ui/CategotyComponent"
 
 
 export const CategoryScreen = ({navigation}) => {
+
     const openPostHandler = props => {
         navigation.navigate('CategoryInsideScreen')
     }
@@ -17,14 +18,12 @@ export const CategoryScreen = ({navigation}) => {
 
     return (
         <ScrollView onContentSizeChange={onContentSizeChange}>
-            <View>
             <CategotyComponent onOpen={openPostHandler} />
             <CategotyComponent onOpen={openPostHandler} />
             <CategotyComponent onOpen={openPostHandler} />
             <CategotyComponent onOpen={openPostHandler} />
             <CategotyComponent onOpen={openPostHandler} />
             <CategotyComponent onOpen={openPostHandler} />
-            </View>
         </ScrollView>
     )
 }
@@ -41,8 +40,4 @@ CategoryScreen.navigationOptions = {
         </HeaderButtons>
     )
 }
-const styles = StyleSheet.create({
-    mainView: {
-        marginTop: 10
-    }
-})
+

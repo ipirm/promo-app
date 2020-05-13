@@ -1,14 +1,18 @@
 import React from 'react'
-import {StyleSheet, ScrollView,Text} from 'react-native';
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import {AppHeaderIcon} from "../components/AppHeaderIcon";
+import {StyleSheet, ScrollView} from 'react-native'
+import {HeaderButtons, Item} from "react-navigation-header-buttons"
+import {AppHeaderIcon} from "../components/AppHeaderIcon"
+import {AppText} from "../components/ui/text/AppText"
+
 export const FavoritesScreen = () => {
+
     return (
         <ScrollView style={styles.mainView}>
-            <Text> Akzii </Text>
+            <AppText> Akzii </AppText>
         </ScrollView>
     )
 }
+
 FavoritesScreen.navigationOptions = {
     headerTitle: 'Акции',
     headerRight: () => (
@@ -22,6 +26,7 @@ FavoritesScreen.navigationOptions = {
         </HeaderButtons>
     )
 }
+
 const styles = StyleSheet.create({
     mainView: {
         marginTop: 10

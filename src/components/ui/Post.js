@@ -1,23 +1,28 @@
 import React from 'react'
-import {StyleSheet, Text, View, Image,TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Image,TouchableOpacity} from 'react-native'
+import {THEME} from "../../variables/theme"
+import {AppText} from "./text/AppText";
+import {AppTextBold} from "./text/AppTextBold";
 
 
 export const Post = ({item,onOpen}) => {
     return (
         <TouchableOpacity activeOpacity={0.7} onPress={()=>onOpen(item)}>
         <View style={{...styles.post}}>
-            <Image style={styles.image} source={{uri: item.thumbnailUrl}}/>
+            <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
             <View style={styles.textWrapper}>
-                <Text style={styles.title}>TITLE{"\n"}<Text style={styles.text}>{item.title.slice(0,40)}</Text></Text>
-                <View style={styles.elevatedElement}><Text style={styles.elevatedText}> 30% </Text></View>
+                <AppText style={styles.title}>{item.title}{"\n"}<AppText style={styles.text}>{item.body.slice(0,40)}</AppText></AppText>
+                <View style={styles.elevatedElement}><AppTextBold style={styles.elevatedText}> 30% </AppTextBold></View>
             </View>
         </View>
         </TouchableOpacity>
     )
 }
+
+
 const styles = StyleSheet.create({
     elevatedElement: {
-        backgroundColor: "#1EDA31",
+        backgroundColor: THEME.GREEN_COLOR,
         width: 41.87,
         height: 33.74,
         alignItems: 'center',
@@ -28,12 +33,11 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     elevatedText: {
-        // fontFamily: "Source Sans Pro",
         fontStyle: "normal",
         fontWeight: "bold",
         fontSize: 16,
         lineHeight: 23,
-        color: "#FFFFFF"
+        color: THEME.WHITE_COLOR
     },
     post: {
         marginBottom: 10,
@@ -47,14 +51,14 @@ const styles = StyleSheet.create({
     },
     textWrapper: {
         paddingVertical: 5,
-        backgroundColor: '#fff',
+        backgroundColor: THEME.WHITE_COLOR,
         width: '100%',
         flex:1,
         flexDirection: 'row',
         paddingLeft: 8
     },
     text: {
-        color: '#000',
+        color: THEME.BLACK_COLOR,
         fontSize: 12,
         textTransform: 'capitalize',
         fontWeight: 'normal',
@@ -64,6 +68,7 @@ const styles = StyleSheet.create({
         flex: 4,
         fontSize: 14,
         fontWeight: 'bold',
+        fontFamily: 'open-sans-bold',
         lineHeight: 18,
         marginBottom: 40
     },

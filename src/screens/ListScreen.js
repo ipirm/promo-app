@@ -1,12 +1,24 @@
-import React, {useState} from 'react'
-import {StyleSheet, Text, View, ScrollView, Image} from 'react-native';
-import {DATA} from "../mockData/data";
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import {AppHeaderIcon} from "../components/AppHeaderIcon";
+import React, {useState, useEffect} from 'react'
+import {StyleSheet, View, ScrollView, Image} from 'react-native'
+import {HeaderButtons, Item} from "react-navigation-header-buttons"
+import {AppHeaderIcon} from "../components/AppHeaderIcon"
+import {THEME} from "../variables/theme"
+import {AppText} from "../components/ui/text/AppText"
+import {useDispatch, useSelector} from "react-redux";
+import {getPost} from "../store/actions/post";
+
 
 export const ListScreen = ({navigation}) => {
+
+
     const postId = navigation.getParam('postId');
-    const post = DATA.find(i => i.id === postId);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPost(postId))
+    }, [dispatch]);
+
+    const post = useSelector(state => state.post.activePost)
 
     const [screenHeight, setScreenHeight] = useState(0);
 
@@ -18,13 +30,13 @@ export const ListScreen = ({navigation}) => {
     return (
         <ScrollView onContentSizeChange={onContentSizeChange}>
             <View>
-                <Image style={styles.image} source={{uri: post.thumbnailUrl}}/>
+                <Image style={styles.image} source={{uri: 'https://via.placeholder.com/150/92c952'}}/>
                 <View style={styles.overlayText}>
-                    <Text style={styles.mainText}>{post.title} </Text>
+                    <AppText style={styles.mainText}>{post.body} </AppText>
                     <View style={styles.overlayDate}>
-                        <Text style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </Text>
+                        <AppText style={styles.dateText}>Скидка действует: с 01.02.2020 по 03.04.2020 </AppText>
                     </View>
-                    <View style={styles.elevatedElement}><Text style={styles.elevatedText}> 30% </Text></View>
+                    <View style={styles.elevatedElement}><AppText style={styles.elevatedText}> 30% </AppText></View>
                 </View>
             </View>
         </ScrollView>
@@ -33,7 +45,7 @@ export const ListScreen = ({navigation}) => {
 
 ListScreen.navigationOptions = ({navigation}) => {
     const like = navigation.getParam('like')
-    const iconName = like?  'ios-heart' : 'ios-heart-empty';
+    const iconName = like ? 'ios-heart' : 'ios-heart-empty';
     return {
         headerTitle: 'Скидка',
         headerRight: () => (
@@ -43,6 +55,8 @@ ListScreen.navigationOptions = ({navigation}) => {
         ),
     }
 }
+
+
 const styles = StyleSheet.create({
     image: {
         width: '100%',
@@ -51,13 +65,13 @@ const styles = StyleSheet.create({
     overlayText: {
         flex: 1,
         padding: 8,
-        backgroundColor: '#fff',
+        backgroundColor: THEME.WHITE_COLOR,
         marginTop: 5,
         marginHorizontal: 8,
         borderRadius: 3
     },
     elevatedElement: {
-        backgroundColor: "#1EDA31",
+        backgroundColor: THEME.GREEN_COLOR,
         width: 50.87,
         height: 33.74,
         alignItems: 'center',
@@ -67,28 +81,25 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     elevatedText: {
-        // fontFamily: "Source Sans Pro",
         fontStyle: "normal",
         fontWeight: "bold",
         fontSize: 16,
         lineHeight: 23,
-        color: "#FFFFFF"
+        color: THEME.WHITE_COLOR
     },
     mainText: {
-        // fontFamily: "Source Sans Pro",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 14,
         lineHeight: 16,
-        color: "#000000"
+        color: THEME.BLACK_COLOR
     },
     dateText: {
-        // fontFamily: "Source Sans Pro",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 12,
         lineHeight: 13,
-        color: "#989898"
+        color: THEME.GREY_FONT_COLOR
     },
     overlayDate: {
         marginTop: 15

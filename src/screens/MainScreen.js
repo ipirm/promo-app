@@ -1,23 +1,27 @@
-import React, {useState} from 'react'
-import {StyleSheet, ScrollView} from 'react-native';
-import {DATA} from "../mockData/data";
-import {Post} from "../components/ui/Post";
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import {AppHeaderIcon} from "../components/AppHeaderIcon";
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {HeaderButtons, Item} from "react-navigation-header-buttons"
+import {AppHeaderIcon} from "../components/AppHeaderIcon"
+import {AppView} from "../components/AppView"
+import {loadPosts} from "../store/actions/post";
+
 
 export const MainScreen = ({navigation}) => {
+
     const openPostHandler = post => {
-        navigation.navigate('List', {postId: post.id, like: post.like})
+        navigation.navigate('List', {postId: post.id, like: false})
     }
-    const [screenHeight, setScreenHeight] = useState(0);
-    const onContentSizeChange = (contentWidth, contentHeight) => {
-        return setScreenHeight(contentHeight)
-    }
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(loadPosts())
+    }, [dispatch]);
+
+    const allPosts = useSelector(state => state.post.allPosts)
+
     return (
-        <ScrollView style={styles.mainView} onContentSizeChange={onContentSizeChange}>
-            {DATA.map((value, index) => {
-                return <Post key={index} item={value} onOpen={openPostHandler}/>
-            })}</ScrollView>
+        <AppView data={allPosts} onOpenPostView={openPostHandler}/>
     )
 }
 
@@ -34,8 +38,3 @@ MainScreen.navigationOptions = {
         </HeaderButtons>
     )
 }
-const styles = StyleSheet.create({
-    mainView: {
-        marginTop: 10
-    }
-})

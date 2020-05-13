@@ -1,17 +1,20 @@
-import React from 'react';
-import {createAppContainer} from 'react-navigation';
+import React from 'react'
+import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {createBottomTabNavigator} from 'react-navigation-tabs'
-import {MainScreen} from "../screens/MainScreen";
-import {ListScreen} from "../screens/ListScreen";
-import {FavoritesScreen} from "../screens/FavoritesScreen";
-import {Ionicons} from "@expo/vector-icons";
-import {CategoryScreen} from "../screens/category/CategoryScreen";
-import {CompanyScreen} from "../screens/company/CompanyScreen";
-import {CategoryInsideScreen} from "../screens/category/CategoryInsideScreen";
-import {CompanyInsideScreen} from "../screens/company/CompanyInsideScreen";
+import {MainScreen} from "../screens/MainScreen"
+import {ListScreen} from "../screens/ListScreen"
+import {FavoritesScreen} from "../screens/FavoritesScreen"
+import {Ionicons} from "@expo/vector-icons"
+import {CategoryScreen} from "../screens/category/CategoryScreen"
+import {CompanyScreen} from "../screens/company/CompanyScreen"
+import {CategoryInsideScreen} from "../screens/category/CategoryInsideScreen"
+import {CompanyInsideScreen} from "../screens/company/CompanyInsideScreen"
+import {THEME} from "../variables/theme"
+
 
 const PostNavigation = createStackNavigator({
+
     Main: MainScreen,
     List: {
         screen: ListScreen
@@ -61,6 +64,7 @@ const BottomTabNavigation = createBottomTabNavigator({
         }
     },
     Favorites: {
+        label: 'Избранное',
         screen: FavoriteNavigator,
         navigationOptions: {
             tabBarIcon: info => (<Ionicons name="ios-heart" size={25} color={info.tintColor}/>)
@@ -68,8 +72,8 @@ const BottomTabNavigation = createBottomTabNavigator({
     },
 }, {
     tabBarOptions: {
-        inactiveTintColor: '#9B9B9B',
-        activeTintColor: '#DB3022'
+        inactiveTintColor: THEME.MENU_TITLE_COLOR,
+        activeTintColor: THEME.MENU_ACTIVE_TITLE_COLOR
     }
 })
 export const AppNavigation = createAppContainer(BottomTabNavigation)
